@@ -1,6 +1,6 @@
 const express = require('express');
 const fetch = require('node-fetch');
-const cors = require('cors') 
+const cors = require('cors')
 
 const app = express();
 const port = 3000;
@@ -8,7 +8,7 @@ const port = 3000;
 const LOKALISE_API_ENDPOINT = 'https://api.lokalise.com/api2';
 
 app.use(express.json());
-app.use(cors()); 
+app.use(cors());
 
 app.all('*', async (req, res) => {
     const url = LOKALISE_API_ENDPOINT + req.url;
@@ -27,7 +27,7 @@ app.all('*', async (req, res) => {
                 method: req.method,
                 headers: {
                     'Content-Type': 'application/json',
-                    'X-Api-Token': req.headers['X-Api-Token']
+                    'X-Api-Token': req.headers['x-api-token']
                 },
                 body: JSON.stringify(req.body)
             });
